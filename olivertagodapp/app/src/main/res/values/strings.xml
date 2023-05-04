@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">olivertagod_loginregistrationapp</string>
+    <string name="logout_button_label">logout</string>
+    <string name="logout_button">logout</string>
+    <string name="welcome_activity_label">Welcome</string>
+    <string name="welcome_message">Welcome to my App User</string>
+    <string name="logout_message">You have been logged out</string>
+</resources>
