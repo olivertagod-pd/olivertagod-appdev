@@ -1,17 +1,21 @@
 <?php
 
-    $con = mysqli_connect("localhost","id20700382_myapps","=4m71IT[W>u>[+8=","id20700382_ogtagodapps");
+$con = mysqli_connect("localhost", "id20700382_myapps", "=4m71IT[W>u>[+8=", "id20700382_ogtagodapps");
 
-    $email = $_POST['email'];
-    $password = $_POST['password'];
+$email = $_POST['email'];
+$password = $_POST['password'];
 
-    $sql = "SELECT * FROM finalapp WHERE email = '$email' AND password = '$password'";
-    $result = mysqli_query($con, $sql);
+$stmt = mysqli_prepare($con, "SELECT * FROM finalapp WHERE email = ? AND password = ?");
+mysqli_stmt_bind_param($stmt, "ss", $email, $password);
+mysqli_stmt_execute($stmt);
+$result = mysqli_stmt_get_result($stmt);
 
-    if($result->num_rows > 0){
-        echo "logged in successfully";
-    } else {
-        echo "user not found";
-    }
+if ($result->num_rows > 0) {
+    echo "success";
+} else {
+    echo "failure";
+}
 
+mysqli_stmt_close($stmt);
+mysqli_close($con);
 ?>
